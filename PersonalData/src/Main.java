@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         InputValidator inputValidator = new InputValidator(scanner);
-
+        //
         String surname = inputValidator.getValidInput("Enter your surname in Russian: ", "Invalid surname. Please enter only letters.");
         String firstName = inputValidator.getValidInput("Enter your first name in Russian: ", "Invalid first name. Please enter only letters.");
         String patronymic = inputValidator.getValidInput("Enter your middle name in Russian: ", "Invalid middle name. Please enter only letters.");
