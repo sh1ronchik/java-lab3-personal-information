@@ -25,8 +25,8 @@ public class Person {
     }
 
     public void determineGender() {
-        char firstLetter = surname.charAt(0);
-        if (firstLetter == 'А' || firstLetter == 'Я') {
+        String patronymicLowerCase = patronymic.toLowerCase();
+        if (patronymicLowerCase.endsWith("а") || patronymicLowerCase.endsWith("я")) {
             this.gender = "female";
         } else {
             this.gender = "male";

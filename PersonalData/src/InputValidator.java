@@ -1,5 +1,8 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class InputValidator {
     private final Scanner scanner;
@@ -25,12 +28,16 @@ public class InputValidator {
     public String getValidDateInput() {
         String input;
         boolean isValid;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT);
         do {
             System.out.println("Enter your date of birth (in the format DD.MM.YYYY): ");
             input = scanner.nextLine();
-            isValid = Pattern.matches("\\d{2}\\.\\d{2}\\.\\d{4}", input);
-            if (!isValid) {
+            try {
+                LocalDate.parse(input, formatter);
+                isValid = true;
+            } catch (DateTimeParseException e) {
                 System.out.println("Invalid date of birth. Please enter in the format DD.MM.YYYY.");
+                isValid = false;
             }
         } while (!isValid);
         return input;
